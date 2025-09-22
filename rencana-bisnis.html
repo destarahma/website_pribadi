@@ -34,17 +34,19 @@
         /* Header & Nav */
         header {
             background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+            color: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
         }
 
         nav {
@@ -54,38 +56,61 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: white;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--light-color);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            flex: 1;
             justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
         }
 
         .nav-links a {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
-            padding: 0.7rem 1rem;
+            letter-spacing: 1px;
+            padding: 0.8rem 1rem;
+            display: block;
             border-radius: 4px;
             transition: var(--transition);
-            display: block;
         }
 
-        .nav-links a:hover,
+        .nav-links a:hover, 
         .nav-links a.active {
             background-color: var(--primary-color);
             color: #fff;
             transform: translateY(-2px);
         }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        
         /* Section */
         main {
             min-height: 80vh;
@@ -200,17 +225,24 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo"><i class="fas fa-briefcase"></i> Rencana Bisnis</div>
+                <div class="logo">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Website Pribadi</span>
+                </div>
                 <ul class="nav-links">
                     <li><a href="index.html">🏠 Home</a></li>
-                    <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+                    <li><a href="kapita-selekta.html" >📖 Kapita Selekta</a></li>
                     <li><a href="business-plan.html">📈 Business Plan</a></li>
                     <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
                     <li><a href="open-source.html">💻 Open Source</a></li>
-                    <li><a href="rencana-bisnis.html" class="active">💼 Rencana Bisnis</a></li>
+                    <li><a href="rencana-bisnis.html"class="active">💼 Rencana Bisnis</a></li>
                     <li><a href="seminar.html">👥 Seminar</a></li>
                 </ul>
-                <div class="menu-toggle"><span></span><span></span><span></span></div>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
