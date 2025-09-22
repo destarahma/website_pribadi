@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 Flatteners - Website Pribadi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset & Global Style */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary-color: #ff8eb7;
+      --secondary-color: #b83b5e;
+      --accent-color: #ff4f81;
+      --light-color: #ffe6f0;
+      --dark-color: #8e2a4c;
+      --text-color: #333;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe6f0 0%, #ffbfd2 100%);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      justify-content: space-evenly;
+      flex: 1;
+    }
+
+    .nav-links li {
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 0.8rem 1rem;
+      display: block;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: var(--primary-color);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      transition: var(--transition);
+    }
+
+    /* Main Content */
+    main {
+      min-height: 80vh;
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--dark-color);
+      font-size: 2.5rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    .content-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease;
+    }
+
+    .content-box h3 {
+      margin-bottom: 1rem;
+      color: var(--dark-color);
+    }
+
+    .content-box ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-box p {
+      margin-bottom: 1rem;
+    }
+
+    strong {
+      color: var(--secondary-color);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--light-color);
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 1rem;
+      }
+      .nav-links.active { display: flex; }
+      .nav-links li { margin: 0.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-user-graduate"></i>
+          <span>Website Pribadi</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+          <li><a href="business-plan.html">📈 Business Plan</a></li>
+          <li><a href="flatteners.html" class="active">🌐 10 Flatteners</a></li>
+          <li><a href="open-source.html">💻 Open Source</a></li>
+          <li><a href="rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+          <li><a href="seminar.html">👥 Seminar</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="flatteners">
+      <div class="container">
+        <h2 class="section-title">10 Kekuatan Pendatar Dunia</h2>
+
+        <div class="content-box">
+          <h3><i class="fas fa-list-ol"></i> Daftar 10 Flatteners (Friedman)</h3>
+          <ol>
+            <li>Jatuhnya Tembok Berlin (9/11/1989)</li>
+            <li>Netscape Go Public (8/9/1995)</li>
+            <li>Workflow Software</li>
+            <li>Open-Sourcing</li>
+            <li>Outsourcing</li>
+            <li>Offshoring</li>
+            <li>Supply-Chaining</li>
+            <li>Insourcing</li>
+            <li>In-forming</li>
+            <li>Steroids (teknologi digital, mobile, personal, virtual)</li>
+          </ol>
+        </div>
+
+        <div class="content-box">
+          <h3><i class="fas fa-star"></i> Kekuatan Paling Relevan</h3>
+          <p>Dari 10 flatteners tersebut, yang paling relevan dengan saya adalah <strong>Open-Sourcing</strong>. 
+          Sebagai developer, open source memberikan akses kepada berbagai tools, library, dan framework 
+          yang sangat membantu dalam pengembangan aplikasi. Selain itu, filosofi open source juga mendorong 
+          kolaborasi dan berbagi pengetahuan.</p>
+        </div>
+
+        <div class="content-box">
+          <h3><i class="fas fa-graduation-cap"></i> Dampak untuk KP/Skripsi</h3>
+          <p>Open source memungkinkan saya untuk menggunakan teknologi terkini tanpa biaya lisensi, 
+          mempelajari kode dari project yang sudah ada, dan berkontribusi pada komunitas developer. 
+          Hal ini sangat mendukung KP dan skripsi saya karena memberikan fondasi teknologi yang kuat 
+          dan akses kepada pengetahuan dari developer di seluruh dunia.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/desta-rahma-irayani-667b55340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/destarahma"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/destaarahma?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:destarahma190@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle menu mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

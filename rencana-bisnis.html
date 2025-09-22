@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rencana Bisnis - Website Pribadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff8eb7;
+            --secondary-color: #b83b5e;
+            --accent-color: #ff4f81;
+            --light-color: #ffe6f0;
+            --dark-color: #8e2a4c;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe6f0 0%, #ffbfd2 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            flex: 1;
+            justify-content: space-evenly;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.7rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Section */
+        main {
+            min-height: 80vh;
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        .content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .content p,
+        .content ul {
+            margin-bottom: 1.5rem;
+        }
+
+        .content ul {
+            padding-left: 1.2rem;
+        }
+
+        .content li {
+            margin-bottom: 0.7rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--light-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: var(--secondary-color);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; flex-direction: column; cursor: pointer; }
+            .menu-toggle span {
+                width: 25px;
+                height: 3px;
+                background: white;
+                margin: 3px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-briefcase"></i> Rencana Bisnis</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+                    <li><a href="business-plan.html">📈 Business Plan</a></li>
+                    <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
+                    <li><a href="open-source.html">💻 Open Source</a></li>
+                    <li><a href="rencana-bisnis.html" class="active">💼 Rencana Bisnis</a></li>
+                    <li><a href="seminar.html">👥 Seminar</a></li>
+                </ul>
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="rencana-bisnis">
+            <div class="container">
+                <h2 class="section-title">Rencana Bisnis Akademik</h2>
+                <div class="content">
+                    <h3>Kompetensi Kurikulum PSTI</h3>
+                    <p>Saya memilih kompetensi <strong>Web & Mobile Application Development</strong> karena sesuai dengan minat dan tujuan karir saya sebagai full-stack developer.</p>
+                    
+                    <h3>SWEBOK yang Relevan</h3>
+                    <ul>
+                        <li><strong>Requirements Engineering:</strong> Analisis kebutuhan pengguna.</li>
+                        <li><strong>Design:</strong> Perancangan arsitektur, UI/UX, database.</li>
+                        <li><strong>Testing:</strong> Pengujian fungsionalitas & performa.</li>
+                        <li><strong>Maintenance:</strong> Pemeliharaan dan update aplikasi.</li>
+                        <li><strong>Project Management:</strong> Perencanaan dan manajemen proyek.</li>
+                    </ul>
+                    
+                    <h3>Judul KP & Skripsi</h3>
+                    <p><strong>KP:</strong> Aplikasi Manajemen Tugas Berbasis Web dengan Fitur Kolaborasi Tim</p>
+                    <p><strong>Skripsi:</strong> Aplikasi Mobile untuk Monitoring Kesehatan Mental berbasis CBT</p>
+                    
+                    <h3>Perencanaan Bisnis Kolaborasi</h3>
+                    <p>Saya berencana berkolaborasi dengan 2 rekan: 1 fokus pada UI/UX dan 1 fokus backend. Kami akan membentuk tim untuk proyek freelance dan membangun startup digital di bidang kesehatan mental.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/desta-rahma-irayani-667b55340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/destarahma"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/destaarahma?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:destarahma190@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

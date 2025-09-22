@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Plan - Website Pribadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff8eb7;   /* pink cerah */
+            --secondary-color: #b83b5e; /* pink tua/navy pink */
+            --accent-color: #ff4f81;    /* pink tegas */
+            --light-color: #ffe6f0;     /* pink muda pastel */
+            --dark-color: #8e2a4c;      /* pink gelap */
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe6f0 0%, #ffbfd2 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--light-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.8rem 1rem;
+            display: block;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        main {
+            min-height: 80vh;
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+            position: relative;
+            font-size: 2.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* SWOT Analysis */
+        .swot-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .swot-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .swot-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .swot-header {
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .strength .swot-header {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+
+        .weakness .swot-header {
+            background: linear-gradient(135deg, #F44336, #C62828);
+        }
+
+        .opportunity .swot-header {
+            background: linear-gradient(135deg, #2196F3, #1565C0);
+        }
+
+        .threat .swot-header {
+            background: linear-gradient(135deg, #FF9800, #EF6C00);
+        }
+
+        .swot-content {
+            padding: 1.5rem;
+        }
+
+        .swot-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .swot-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .swot-content li:before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Porter's Five Forces */
+        .porter-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .porter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .force-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-left: 4px solid var(--primary-color);
+            background-color: var(--light-color);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .force-item strong {
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Strategy Section */
+        .strategy-container {
+            background: linear-gradient(135deg, var(--light-color), #ffd9e6);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 2px dashed var(--primary-color);
+        }
+
+        .strategy-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .strategy-point {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .strategy-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .strategy-icon {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--light-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .swot-container {
+                grid-template-columns: 1fr;
+            }
+
+            .strategy-points {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Website Pribadi</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+                    <li><a href="business-plan.html" class="active">📈 Business Plan</a></li>
+                    <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
+                    <li><a href="open-source.html">💻 Open Source</a></li>
+                    <li><a href="rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+                    <li><a href="seminar.html">👥 Seminar</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="business-plan">
+            <div class="container">
+                <h2 class="section-title">Business Strategic Plan</h2>
+                
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--dark-color);">Analisis Strategi untuk Kesuksesan Akademik dan Profesional</h3>
+                
+                <div class="swot-container">
+                    <div class="swot-card strength">
+                        <div class="swot-header">
+                            <i class="fas fa-thumbs-up"></i> Strength (Kekuatan)
+                        </div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>Kemampuan teknis dalam pengembangan web</li>
+                                <li>Pemahaman dasar UI/UX</li>
+                                <li>Kemampuan belajar cepat</li>
+                                <li>Ketertarikan pada teknologi terkini</li>
+                                <li>Kreativitas dalam menyelesaikan masalah</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="swot-card weakness">
+                        <div class="swot-header">
+                            <i class="fas fa-thumbs-down"></i> Weakness (Kelemahan)
+                        </div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>Pengalaman praktis yang masih terbatas</li>
+                                <li>Manajemen waktu yang perlu ditingkatkan</li>
+                                <li>Kurangnya pengalaman dalam proyek skala besar</li>
+                                <li>Perlu pengembangan skill leadership</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="swot-card opportunity">
+                        <div class="swot-header">
+                            <i class="fas fa-bullseye"></i> Opportunity (Peluang)
+                        </div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>Permintaan tinggi untuk developer web dan mobile</li>
+                                <li>Banyaknya sumber belajar online</li>
+                                <li>Perkembangan startup digital yang pesat</li>
+                                <li>Peluang kerja remote yang semakin luas</li>
+                                <li>Komunitas developer yang aktif dan supportive</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="swot-card threat">
+                        <div class="swot-header">
+                            <i class="fas fa-exclamation-triangle"></i> Threat (Ancaman)
+                        </div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>Persaingan dengan developer lain</li>
+                                <li>Perubahan teknologi yang cepat</li>
+                                <li>Standar industri yang terus berkembang</li>
+                                <li>Automation dalam pengembangan software</li>
+                                <li>Perubahan kebutuhan pasar yang dinamis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="porter-container">
+                    <h3 style="color: var(--dark-color); margin-bottom: 1.5rem; text-align: center;">
+                        <i class="fas fa-chess-board"></i> Porter's Five Forces Analysis
+                    </h3>
+                    <p style="text-align: center; margin-bottom: 2rem;">Analisis lingkungan dan persaingan dalam industri pengembangan web dan aplikasi mobile:</p>
+                    
+                    <div class="force-item">
+                        <strong>1. Persaingan antar kompetitor</strong>
+                        <span style="color: #E91E63;">Tinggi</span> - Banyak developer dan perusahaan yang menawarkan jasa serupa dengan variasi kualitas dan harga.
+                    </div>
+                    
+                    <div class="force-item">
+                        <strong>2. Ancaman pendatang baru</strong>
+                        <span style="color: #E91E63;">Sedang</span> - Barrier to entry tidak terlalu tinggi tetapi membutuhkan keahlian khusus dan pengalaman.
+                    </div>
+                    
+                    <div class="force-item">
+                        <strong>3. Kekuatan tawar menawar pembeli</strong>
+                        <span style="color: #E91E63;">Tinggi</span> - Klien memiliki banyak pilihan provider dan dapat dengan mudah beralih ke kompetitor.
+                    </div>
+                    
+                    <div class="force-item">
+                        <strong>4. Kekuatan tawar menawar pemasok</strong>
+                        <span style="color: #E91E63;">Sedang</span> - Tools dan platform development umumnya mudah diakses dengan harga kompetitif.
+                    </div>
+                    
+                    <div class="force-item">
+                        <strong>5. Ancaman produk substitusi</strong>
+                        <span style="color: #E91E63;">Sedang</span> - Terdapat alternatif seperti platform website builder yang menawarkan solusi instan.
+                    </div>
+                </div>
+                
+                <div class="strategy-container">
+                    <h3 style="color: var(--dark-color); margin-bottom: 1.5rem; text-align: center;">
+                        <i class="fas fa-flag-checkered"></i> Kesimpulan: Strategi Sukses KP/Skripsi
+                    </h3>
+                    <p style="text-align: center; margin-bottom: 1.5rem;">Berdasarkan analisis SWOT dan Porter's Five Forces, strategi yang akan diterapkan adalah:</p>
+                    
+                    <div class="strategy-points">
+                        <div class="strategy-point">
+                            <div class="strategy-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div>
+                                <strong>Fokus pada Niche Spesifik</strong>
+                                <p>Mengembangkan keahlian khusus di bidang UI/UX untuk web dan mobile dengan pendekatan yang terukur dan berbasis penelitian.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="strategy-point">
+                            <div class="strategy-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <strong>Portfolio yang Kuat</strong>
+                                <p>Membangun portfolio melalui proyek-proyek kecil yang terdokumentasi dengan baik, menunjukkan perkembangan skill dari waktu ke waktu.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="strategy-point">
+                            <div class="strategy-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <strong>Jaringan Profesional</strong>
+                                <p>Membangun jaringan dengan profesional di industri melalui komunitas, event, dan platform online untuk belajar dan berkolaborasi.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="strategy-point">
+                            <div class="strategy-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Pembelajaran Berkelanjutan</strong>
+                                <p>Terus mengupdate pengetahuan dengan teknologi terkini melalui kursus online, workshop, dan praktik langsung dalam proyek nyata.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/desta-rahma-irayani-667b55340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/destarahma"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/destaarahma?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:destarahma190@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Animate hamburger icon
+                    const spans = menuToggle.querySelectorAll('span');
+                    if (navLinks.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '0.5rem 0';
+                    header.style.background = 'rgba(184, 59, 94, 0.95)';
+                } else {
+                    header.style.padding = '1rem 0';
+                    header.style.background = 'linear-gradient(90deg, #b83b5e, #ff8eb7)';
+                }
+            });
+            
+            // Animate cards on scroll
+            const swotCards = document.querySelectorAll('.swot-card');
+            const strategyPoints = document.querySelectorAll('.strategy-point');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            swotCards.forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
+            
+            strategyPoints.forEach(point => {
+                point.style.opacity = '0';
+                observer.observe(point);
+            });
+            
+            // Animate force items
+            const forceItems = document.querySelectorAll('.force-item');
+            const forceObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideIn 0.8s ease forwards';
+                        forceObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            forceItems.forEach(item => {
+                item.style.opacity = '0';
+                forceObserver.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

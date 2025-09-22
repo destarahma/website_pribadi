@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar - Website Pribadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff8eb7;   /* pink cerah */
+            --secondary-color: #b83b5e; /* pink tua/navy pink */
+            --accent-color: #ff4f81;    /* pink tegas */
+            --light-color: #ffe6f0;     /* pink muda pastel */
+            --dark-color: #8e2a4c;      /* pink gelap */
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe6f0 0%, #ffbfd2 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--light-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.8rem 1rem;
+            display: block;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        main {
+            min-height: 80vh;
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+            position: relative;
+            font-size: 2.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Seminar Overview */
+        .overview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .overview-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .overview-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .overview-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Participants Table */
+        .participants-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            overflow-x: auto;
+        }
+
+        .participants-container h3 {
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--light-color);
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .empty-row {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Documentation Section */
+        .documentation-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .documentation-container h3 {
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            background: var(--light-color);
+            border-radius: 10px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px dashed var(--primary-color);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            background: #ffd9e6;
+        }
+
+        .gallery-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-text {
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        /* Add Data Button */
+        .add-data {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #b83b5e, #ff8eb7);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--light-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .overview-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Website Pribadi</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+                    <li><a href="business-plan.html">📈 Business Plan</a></li>
+                    <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
+                    <li><a href="open-source.html">💻 Open Source</a></li>
+                    <li><a href="rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+                    <li><a href="seminar.html" class="active">👥 Seminar</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="seminar">
+            <div class="container">
+                <h2 class="section-title">Seminar / Kolaborasi</h2>
+                
+                <div class="overview-container">
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Partisipan Seminar</h3>
+                        <p>Daftar rekan yang berpartisipasi dalam kegiatan seminar dan kolaborasi akademik.</p>
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Rekan Terdaftar</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Proyek Kolaborasi</h3>
+                        <p>Berbagai proyek dan penelitian yang dikembangkan bersama rekan seminar.</p>
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Proyek Aktif</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Jadwal Kegiatan</h3>
+                        <p>Jadwal seminar, diskusi, dan pertemuan kolaborasi yang akan datang.</p>
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Kegiatan Terjadwal</div>
+                    </div>
+                </div>
+                
+                <div class="participants-container">
+                    <h3><i class="fas fa-list-alt"></i> Daftar Rekan Seminar</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Judul KP</th>
+                                <th>Judul Skripsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="empty-row">
+                                <td colspan="3">Data rekan seminar akan ditambahkan di sini</td>
+                            </tr>
+                            <!-- Template row untuk penambahan data nanti -->
+                            <!--
+                            <tr>
+                                <td>[Nama Rekan]</td>
+                                <td>[Judul Kerja Praktek]</td>
+                                <td>[Judul Skripsi]</td>
+                            </tr>
+                            -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="add-data">
+                        <button class="btn" onclick="addParticipant()">
+                            <i class="fas fa-plus"></i> Tambah Rekan Seminar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="documentation-container">
+                    <h3><i class="fas fa-camera"></i> Dokumentasi Kegiatan</h3>
+                    <p>Dokumentasi dari kegiatan seminar dan kolaborasi yang telah dilakukan:</p>
+                    
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="addDocumentation()">
+                            <div class="gallery-icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <div class="gallery-text">Tambah Dokumentasi</div>
+                        </div>
+                        <!-- Template gallery item untuk penambahan dokumentasi nanti -->
+                        <!--
+                        <div class="gallery-item">
+                            <div class="gallery-icon">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="gallery-text">Foto Seminar 1</div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/desta-rahma-irayani-667b55340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/destarahma"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/destaarahma?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:destarahma190@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Animate hamburger icon
+                    const spans = menuToggle.querySelectorAll('span');
+                    if (navLinks.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '0.5rem 0';
+                    header.style.background = 'rgba(184, 59, 94, 0.95)';
+                } else {
+                    header.style.padding = '1rem 0';
+                    header.style.background = 'linear-gradient(90deg, #b83b5e, #ff8eb7)';
+                }
+            });
+            
+            // Animate cards on scroll
+            const overviewCards = document.querySelectorAll('.overview-card');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            overviewCards.forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
+            
+            galleryItems.forEach(item => {
+                item.style.opacity = '0';
+                observer.observe(item);
+            });
+        });
+
+        // Function untuk menambah peserta (template)
+        function addParticipant() {
+            alert('Fitur tambah rekan seminar akan diimplementasikan nanti. Silakan edit kode HTML langsung untuk menambahkan data.');
+            
+            // Contoh implementasi nanti:
+            /*
+            const tableBody = document.querySelector('table tbody');
+            const emptyRow = document.querySelector('.empty-row');
+            
+            if (emptyRow) {
+                emptyRow.remove();
+            }
+            
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>Nama Rekan Baru</td>
+                <td>Judul KP Baru</td>
+                <td>Judul Skripsi Baru</td>
+            `;
+            tableBody.appendChild(newRow);
+            */
+        }
+
+        // Function untuk menambah dokumentasi (template)
+        function addDocumentation() {
+            alert('Fitur tambah dokumentasi akan diimplementasikan nanti. Silakan edit kode HTML langsung untuk menambahkan foto.');
+            
+            // Contoh implementasi nanti:
+            /*
+            const gallery = document.querySelector('.gallery');
+            const newItem = document.createElement('div');
+            newItem.className = 'gallery-item';
+            newItem.innerHTML = `
+                <div class="gallery-icon">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="gallery-text">Foto Baru</div>
+            `;
+            gallery.appendChild(newItem);
+            */
+        }
+    </script>
+</body>
+</html>
